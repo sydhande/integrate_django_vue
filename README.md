@@ -1,93 +1,84 @@
+Django and Vue Integration 
+
 On Windows 10 Machine
 
-C:\Users>py --version
+check py --version
+
 Python 3.9.0
 
-C:\Users>pip3 list
-Package    Version
----------- -------
-pip        20.2.3
-setuptools 49.2.1
+pip3 --version
 
-command prompt
+pip 20.3.1
 
+for Virtualenvironment, give commands
 
-C:\Users>pip3 install virtualenvwrapper-win
+pip3 install virtualenvwrapper-win
 
-C:\Users>mkvirtualenv my_django_env
+mkvirtualenv my_django_env
 
 It will create Directory Envs\my_django_env
 
-
 commands to activate Envrionment
 
+workon my_django_env
 
-C:\Users>workon my_django_env
-(my_django_env) C:\Users>pip install django
+pip install django
 
-check
-(my_django_env) C:\Users>python -m django --version
+python -m django --version
+
 3.1.4
 
-(my_django_env) C:\Users>django-admin startproject integrate_django_vue
-(my_django_env) C:\Users>cd integrate_django_vue
-(my_django_env) C:\Users\integrate_django_vue>python manage.py runserver
-check in browser url 
-http://localhost:8000/
-to see The install worked successfully! Congratulations!
+django-admin startproject integrate_django_vue
 
-Stop with ctrl+c
+cd integrate_django_vue
 
-(my_django_env) C:\Users\integrate_django_vue>vue --version
+python manage.py runserver
+
+vue --version
+
 @vue/cli 4.5.9
 
-(my_django_env) C:\Users\integrate_django_vue>vue create frontend_vue
+vue create frontend_vue
+
 Default Vue 2
 
-(my_django_env) C:\Users\integrate_django_vue>cd frontend_vue
-npm run serve
+cd frontend_vue
 
-check in browser url
-http://localhost:8080/
-Welcome to Your Vue.js App
-(my_django_env) C:\Users\integrate_django_vue\frontend_vue>
+npm run serve
 
 make file vue.config.js
 
 change settings.py
 
-#-----------------------------
-(my_django_env) C:\Users\integrate_django_vue>python manage.py startapp rentsites
+python manage.py startapp rentsites
 
 in rentsites
-# views.py add index funtction
 
-#--------------------
+views.py add index funtction
+
 in urls.py add index 
 
----------------
-in App.vue only  <router-view />
+in App.vue add  <router-view />
 
 npm install vue-router
 
 npm install axios
 
-add router.js
+add file router.js
 
 in main.js  add router
-//------------------
+
 in Vue create Services folder
+
 create rentDataService.js
 
-//-----------------
-and create http-common.js
+create http-common.js
 
-//-------------------------
 pip install djangorestframework
-pip install markdown       # Markdown support for the browsable API.
 
+pip install markdown      
 
-add settinng.py
+add setting.py
 in INSTALLED_APP add 
     'rest_framework',
     'rentsites',
@@ -97,34 +88,32 @@ in models.py add model
 create serializers.py
 
 python manage.py makemigrations
+
 python manage.py migrate
+
 python manage.py createsuperuser
 
 add in admin.py
 
 python manage.py runserver
 
-
 Change urls.py
-
 
 browser
 http://localhost:8000/api/rentsites/
 
-
 create RentSitesList.vue
-
 
 http://localhost:8080/
 will show from rest in dev mode
 
-
-
 for Production 
 
-C:\Users\integrate_django_vue\frontend_vue> npm run build
-go to (my_django_env) C:\Users\integrate_django_vue>
+npm run build
+
 python manage.py collectstatic
+
 python manage.py runserver
+
 browser
 http://localhost:8000/
